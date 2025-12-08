@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import {
   Card,
   CardAction,
@@ -46,14 +45,14 @@ export default function LoginCard() {
   return (
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
+          <CardTitle>Faça login na sua conta</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            Entre com seu e-mail MiraPark para logar
           </CardDescription>
 
           <CardAction>
             <Button type="link" variant="link" href="/register">
-              Sign Up
+              Registre-se
             </Button>
           </CardAction>
         </CardHeader>
@@ -80,9 +79,9 @@ export default function LoginCard() {
 
                 <Field>
                   <div className="flex items-center justify-between">
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
+                    <FieldLabel htmlFor="password">Senha</FieldLabel>
                     <a href="#" className="text-sm underline-offset-4 hover:underline">
-                      Forgot your password?
+                      Esqueceu sua senha?
                     </a>
                   </div>
                   <FieldContent>
@@ -110,7 +109,7 @@ export default function LoginCard() {
             Login
           </Button>
           <Button variant="outline" className="w-full">
-            Login with Google
+            Login com Google
           </Button>
         </CardFooter>
       </Card>
