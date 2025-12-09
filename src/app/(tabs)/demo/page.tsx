@@ -8,7 +8,6 @@ export default function DemoPage() {
   return (
     <main className="min-h-screen p-10 mx-auto max-w-7xl">
 
-      {/* Toggle de Tema */}
       <div className="flex justify-end mb-6">
         <DarkLightThemeToggle />
       </div>

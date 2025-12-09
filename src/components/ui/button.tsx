@@ -1,4 +1,3 @@
-// src/components/ui/button.tsx
 import * as React from "react";
 import Link from "next/link";
 import { Slot } from "@radix-ui/react-slot";
@@ -37,26 +36,16 @@ const buttonVariants = cva(
     }
 );
 
-/**
- * Tipos:
- * - ButtonType inclui "link" (comportamento de navegação) além de submit/button/reset.
- * - AnchorButtonProps exige href e (opcional) type === "link".
- * - NativeButtonProps é o caso padrão (botão real).
- */
+
 type ButtonType = "button" | "submit" | "reset" | "link";
 
 type CommonProps = VariantProps<typeof buttonVariants> & {
   asChild?: boolean;
   className?: string;
   children?: React.ReactNode;
-  /**
-   * Use `type="link"` quando o componente deve se comportar semanticamente como link.
-   * Para submissões de formulário, use `type="submit"` (sem href).
-   */
   type?: ButtonType;
 };
 
-/** Caso de âncora/link — exige href e (opcional) type === "link" */
 type AnchorButtonProps = CommonProps &
     Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "className"> & {
   href: string;
@@ -65,7 +54,6 @@ type AnchorButtonProps = CommonProps &
   rel?: string;
 };
 
-/** Caso nativo de botão (form submit/reset/button) — não aceita href */
 type NativeButtonProps = CommonProps &
     Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "className"> & {
   href?: undefined;
@@ -74,15 +62,12 @@ type NativeButtonProps = CommonProps &
 
 export type ButtonProps = AnchorButtonProps | NativeButtonProps;
 
-/**
- * ForwardRef que pode ser HTMLButtonElement ou HTMLAnchorElement.
- */
+
 const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     (props, ref) => {
       const { className, variant, size, asChild = false, children, ...rest } = props as ButtonProps;
       const classes = cn(buttonVariants({ variant, size, className }));
 
-      // asChild: aplicamos classes ao filho via Radix Slot
       if (asChild) {
         const slotProps = rest as Record<string, unknown>;
         return (
@@ -92,9 +77,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         );
       }
 
-      // Caso href presente -> renderiza Link (comportamento de navegação)
       if ("href" in props && typeof props.href === "string") {
-        // AnchorButtonProps
         const { href, target, rel, ...anchorRest } = rest as AnchorButtonProps;
         const safeRel = target === "_blank" && !rel ? "noopener noreferrer" : rel;
         const anchorProps = anchorRest as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href">;
@@ -106,7 +89,6 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         );
       }
 
-      // Caso padrão: <button>
       const buttonRest = rest as React.ButtonHTMLAttributes<HTMLButtonElement>;
       return (
           <button ref={ref as React.Ref<HTMLButtonElement>} className={classes} {...buttonRest}>

@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -12,14 +11,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-      // adicionamos suppressHydrationWarning para reduzir erros de mismatch do html
       <html lang="pt-BR" suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased")}>
       <ThemeProvider
-          attribute="class"                 // importante: next-themes usa a classe "dark"
-          defaultTheme="dark"              // determinístico -> evita mismatch entre server/client
-          enableSystem={false}              // desligue o "system" enquanto testa
-          disableTransitionOnChange         // reduz flicker de transição
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange
       >
         {children}
       </ThemeProvider>

@@ -4,7 +4,6 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/* ---------------- GRID ---------------- */
 const gridStyles = cva("mx-auto", {
     variants: {
         variant: {
@@ -54,14 +53,6 @@ export const BentoGrid = React.forwardRef<HTMLDivElement, BentoGridProps>(
 
 BentoGrid.displayName = "BentoGrid";
 
-/* ---------------- ITEM ---------------- */
-/**
- * base classes intentionally use shadcn-style tokens so ThemeProvider
- * (the one que você mostrou) estilize automaticamente:
- * - bg-card, text-card-foreground, border-border, text-muted-foreground, etc.
- *
- * break-inside-avoid + inline-block + mb-4 são importantes para masonry variant.
- */
 const itemStyles = cva(
     "group/bento shadow-input flex flex-col justify-between space-y-4 rounded-xl border border-border bg-card text-card-foreground p-4 transition duration-200 inline-block w-full break-inside-avoid mb-4",
     {
@@ -85,9 +76,7 @@ const itemStyles = cva(
     }
 );
 
-/**
- * Omit DOM 'title' para permitir ReactNode `title`.
- */
+
 export interface BentoGridItemProps
     extends Omit<React.HTMLAttributes<HTMLDivElement>, "title">,
         VariantProps<typeof itemStyles> {
@@ -96,9 +85,6 @@ export interface BentoGridItemProps
     header?: React.ReactNode;
     footer?: React.ReactNode;
     icon?: React.ReactNode;
-    /**
-     * Quando true, o item passa a ser guiado pelo conteúdo (bom para Grid variant="auto" ou masonry)
-     */
     autoRow?: boolean;
 }
 
@@ -140,7 +126,6 @@ export const BentoGridItem = React.forwardRef<HTMLDivElement, BentoGridItemProps
                         {description}
                     </div>
 
-                    {/* children permite <Image /> ou qualquer nó dentro do card */}
                     {children}
                 </div>
 
