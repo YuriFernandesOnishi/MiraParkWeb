@@ -26,6 +26,10 @@ export const vehicleService = {
   },
 
   getByPlate: async (placa: string): Promise<VehicleRecord[]> => {
+    if (!placa || placa.trim().length === 0) {
+      return [];
+    }
+
     const res = await api.get<VehicleRecord[]>(`/api/veiculos/placa/${placa}`);
     return res.data;
   },
