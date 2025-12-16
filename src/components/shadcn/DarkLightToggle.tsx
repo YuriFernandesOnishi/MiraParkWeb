@@ -35,9 +35,7 @@ export default function DarkLightToggle() {
             >
                 <IoSunnySharp />
             </button>
-
-          {/* <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>Toggle</button> */}
-
+          
         </div>
     );
 }

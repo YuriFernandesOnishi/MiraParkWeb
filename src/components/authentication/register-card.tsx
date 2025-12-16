@@ -87,7 +87,6 @@ export default function RegisterCard() {
         </CardDescription>
       </CardHeader>
 
-      {/* --- AQUI: o botão vai ficar DENTRO do form --- */}
       <form onSubmit={handleSubmit} noValidate>
         <CardContent>
           <div className="flex flex-col gap-6">

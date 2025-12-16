@@ -66,7 +66,6 @@ export default function LoginCard() {
 
     try {
       await login(email, password);
-      // useAuth já faz redirect
     } catch (err) {
       const message = getErrorMessage(err);
       setErrors({ form: message });
