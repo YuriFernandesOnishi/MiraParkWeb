@@ -35,7 +35,7 @@ export default function DarkLightToggle() {
             >
                 <IoSunnySharp />
             </button>
-          
+
         </div>
     );
 }
